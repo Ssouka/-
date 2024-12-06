@@ -1,0 +1,42 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Labirint {
+    public static int Math() {
+        Random rand = new Random();
+        int num1 = rand.nextInt(100) + 10;
+        int num2 = rand.nextInt(100) + 10;
+        String operator = rand.nextBoolean() ? "+" : "-";
+        int correctAnswer = 0;
+        System.out.print("реши " + num1 + " " + operator + " " + num2 + " = ? ");
+        if (operator.equals("+")) {
+            correctAnswer = num1 + num2;
+        } else {
+            correctAnswer = num1 - num2;
+        }
+        return correctAnswer;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int position = 0;
+        System.out.println("Welcome to the Labirint");
+        while (true) {
+            int correctAnswer = Math();
+            int playerAnswer = scanner.nextInt();
+            if (playerAnswer == correctAnswer) {
+                position++;
+                System.out.println("Correct! Move right.");
+            } else {
+                position--;
+                System.out.println("Incorrect! Move left.");
+            }
+            System.out.println("Your position in Labirint: " + position);
+            System.out.print("continue? (yes or no): ");
+            String continuePlay = scanner.next();
+            if (continuePlay.equalsIgnoreCase("no")) {
+                System.out.println("Thanks for playing");
+                break;
+            }
+        }
+    }
+}
