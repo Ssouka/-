@@ -1,5 +1,16 @@
 import java.util.Scanner;
 public class CaesarCipher {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Текст для шифрования: ");
+        String message = scanner.nextLine();
+        System.out.print("Сдвиг");
+        int shift = scanner.nextInt();
+        String encrypted = encrypt(message, shift);
+        System.out.println("Зашифрованное" + encrypted);
+        String decrypted = decrypt(encrypted, shift);
+        System.out.println("Отшифрованное" + decrypted);
+    }
     public static String encrypt(String text, int shift) {
         StringBuilder encryptedText = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
@@ -19,16 +30,5 @@ public class CaesarCipher {
     private static char shiftCharacter(char c, int shift) {
         char base = Character.isUpperCase(c) ? 'A' : 'a';
         return (char) ((c - base + shift + 26) % 26 + base);
-    }
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Текст для шифрования: ");
-        String message = scanner.nextLine();
-        System.out.print("Сдвиг");
-        int shift = scanner.nextInt();
-        String encrypted = encrypt(message, shift);
-        System.out.println("Зашифрованное" + encrypted);
-        String decrypted = decrypt(encrypted, shift);
-        System.out.println("Отшифрованное" + decrypted);
     }
 }
